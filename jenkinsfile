@@ -1,0 +1,9 @@
+@Library('jenkins-shared-library)_
+
+import com.jenkinslib.GlobalVars
+
+stage('Demo') {
+    echo 'Hello world'
+    sayHello 'Jenkins'
+    println GlobalVars.foo
+} 
