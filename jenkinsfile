@@ -1,11 +1,15 @@
 @Library('jenkins-shared-library')_
 
+pipeline {
 
-/*stage('Demo') {
-    echo 'Hello world'
-    sayHello 'Jenkins'
-} */
 
-stage(Maven) {
-    build.groovy()
+stage('Demo') {
+    steps {
+        script {
+            build.mavenbuild()
+
+        }
+    }
+    
 }
+} 
