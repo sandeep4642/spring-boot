@@ -7,6 +7,7 @@ stages {
 
 
   stage('Demo') {
+  when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
                build.mavenbuild()
