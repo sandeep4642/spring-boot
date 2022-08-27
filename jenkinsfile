@@ -16,7 +16,7 @@ stages {
 
   stage('Sonarqube Analysis') {
   agent {
-        label Built-In Node
+        label 'Built-In Node'
       }
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
