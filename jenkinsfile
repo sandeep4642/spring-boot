@@ -41,7 +41,7 @@ stages {
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
-               build.publishDockerImage(registry, registryCreds, dockerImage, imageURI, removeAfterPublish = RemoveImageOPublish)
+               build.publishDockerImage(registry, registryCreds, dockerImageTag, imageURI, removeAfterPublish = RemoveImageOPublish)
 
         }
     }
