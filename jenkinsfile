@@ -16,5 +16,16 @@ stages {
     }
     
   }
+
+  stage('Docker Build') {
+  when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.buildDockerTaggedImage(registry, registryRepo, dockerfile)
+
+        }
+    }
+    
+  }
 }
 } 
