@@ -4,10 +4,12 @@ pipeline {
     agent { label 'azure-agent' }
 
     environment {
+      registryCreds = ${env.ACR}
       registry = 'kubernetesdemononprod.azurecr.io'
       dockerfile = 'Dockerfile'
       registryRepo = '/kubernetesdemononprod/spring-boot'
       imageURI = "${registry}${registryRepo}:${env.BUILD_NUMBER}"
+      RemoveImageOPublish = false
     }
 
 stages {
@@ -28,11 +30,24 @@ stages {
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
-               build.buildDockerTaggedImage(registry, registryRepo, dockerfile)
+              dockerImage = build.buildDockerTaggedImage(registry, registryRepo, dockerfile)
 
         }
     }
     
   }
+
+  stage('Docker Build Push') {
+  when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.publishDockerImage(registry, registryCreds, dockerImage, imageURI, removeAfterPublish = RemoveImageOPublish)
+
+        }
+    }
+    
+  }
+
+
 }
 } 
