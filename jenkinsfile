@@ -14,8 +14,19 @@ pipeline {
 
 stages {
 
+  stage('Sonarqube Analysis') {
+  when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.mavensonarbuild()
 
-  stage('Demo') {
+        }
+    }
+    
+  }
+
+
+  stage('Build') {
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
