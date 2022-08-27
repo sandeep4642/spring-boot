@@ -30,7 +30,7 @@ stages {
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
-              dockerImage = build.buildDockerTaggedImage(registry, registryRepo, dockerfile)
+              dockerImageTag = build.buildDockerTaggedImage(registry, registryRepo, dockerfile)
 
         }
     }
