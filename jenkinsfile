@@ -4,7 +4,7 @@ pipeline {
     agent { label 'azure-agent' }
 
     environment {
-      registryCreds = ${env.ACR}
+      registryCreds = "${env.ACR}"
       registry = 'kubernetesdemononprod.azurecr.io'
       dockerfile = 'Dockerfile'
       registryRepo = '/kubernetesdemononprod/spring-boot'
