@@ -3,6 +3,12 @@
 pipeline {
     agent { label 'azure-agent' }
 
+    environment {
+      registry = 'kubernetesdemononprod'
+      dockerfile = 'Dockerfile'
+      registryRepo = '/kubernetesdemononprod/spring-boot'
+    }
+
 stages {
 
 
