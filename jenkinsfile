@@ -7,6 +7,7 @@ pipeline {
       registry = 'kubernetesdemononprod'
       dockerfile = 'Dockerfile'
       registryRepo = '/kubernetesdemononprod/spring-boot'
+      imageURI = "${registry}/${registryRepo}:${env.BUILD_NUMBER}"
     }
 
 stages {
