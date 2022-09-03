@@ -1,7 +1,7 @@
 @Library('jenkins-shared-library')_
 
 pipeline {
-    agent { label 'azure-agent' }
+    agent any
 
     environment {
       registryCreds = "ACR"
@@ -15,9 +15,6 @@ pipeline {
 stages {
 
   stage('Sonarqube Analysis') {
-  agent {
-        label 'Built-In Node'
-      }
   when { allOf { environment name: 'app_type', value: 'java'} }  
       steps {
           script {
