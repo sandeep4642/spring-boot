@@ -47,4 +47,11 @@ stages {
     
   }
 }
+post {
+    cleanup {
+        script{
+            build.removedockerimage(imageURI)
+        }
+    }
+}
 } 
