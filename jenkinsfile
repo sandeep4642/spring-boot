@@ -3,43 +3,33 @@
 pipeline {
     agent any
 
+
+environment {
+    registry: "sandeep"
+    registryrepo: "sandeep-springboot/${git_repo}"
+    dockerfile: 'Dockerfile'
+    imageuri: "${registry}${registryrepo}:${env.BUILD_NUMBER}"
+}
 stages {
-  stage('linx-Sonarqube analysis') {
-   when { allOf { environment name: 'os_type', value: 'linux'} }  
-      steps {
-          script {
-               build.mavensonarbuild()
 
-        }
-    }
-    
-  }
-
-    stage('windows-Sonarqube analysis') {
-    when { allOf { environment name: 'os_type', value: 'windows'} }  
-      steps {
-          script {
-               build.windowsmavensonarbuild()
-
-        }
-    }
-    
-  }
-    stage('Quality gate') { 
-      steps {
-          script {
-               build.qualitygate()
-
-        }
-    }
-    
-  }
     stage('Build') {
     agent { label 'slave1'}
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
                build.mavenbuild()
+
+        }
+    }
+    
+  }
+
+    stage('Docker build') {
+    agent { label 'slave1'}
+    when { allOf { environment name: 'os_type', value: 'linux'} }  
+      steps {
+          script {
+               build.buildDockerTaggedImage(imageuri)
 
         }
     }
