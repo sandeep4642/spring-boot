@@ -18,3 +18,44 @@ stages {
   }
 }
 } 
+@Library('jenkins-shared-library')_
+
+pipeline {
+    agent any
+
+stages {
+
+
+  stage('Sonarqube analysis') {
+  when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.mavensonarbuild()
+
+        }
+    }
+    
+  }
+    stage('Quality gate') {
+    when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.qualitygate()
+
+        }
+    }
+    
+  }
+    stage('Build') {
+    agent { label 'slave1'}
+    when { allOf { environment name: 'app_type', value: 'java'} }  
+      steps {
+          script {
+               build.mavenbuild()
+
+        }
+    }
+    
+  }
+}
+} 
