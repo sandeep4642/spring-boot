@@ -1,4 +1,4 @@
-FROM ubuntu:16
+FROM java:8
 
 RUN groupadd -g 1999 sandeep-grp && useradd -r -u 1999 -g root sandeep
 
