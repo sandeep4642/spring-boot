@@ -5,8 +5,9 @@ pipeline {
 
 
 environment {
-    registry = "sandeep"
+    registry = "sandeep4642"
     registryrepo = "/sandeep-springboot/spring-boot"
+    registryCreds = "dockerhub-creds"
     dockerfile = "Dockerfile"
     imageURI =  "${registry}${registryrepo}:${env.BUILD_NUMBER}"
 }
@@ -30,6 +31,17 @@ stages {
       steps {
           script {
                build.buildDockerTaggedImage1(imageURI)
+
+        }
+    }
+    
+  }
+  stage('Docker push') {
+    agent { label 'slave1'}
+    when { allOf { environment name: 'os_type', value: 'linux'} }  
+      steps {
+          script {
+               build.publishDockerImage(registry, registryCreds, dockerImage, imageURI, removeAfterPublish = RemoveImageOPublish)
 
         }
     }
