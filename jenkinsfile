@@ -4,10 +4,8 @@ pipeline {
     agent any
 
 stages {
-
-
   stage('Sonarqube analysis') {
-  when { allOf { environment name: 'os_type', value: 'linux'} }  
+   when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
                build.mavensonarbuild()
@@ -27,19 +25,7 @@ stages {
     }
     
   }
-    stage('Quality gate') {
-    when { allOf { environment name: 'os_type', value: 'linux'} }  
-      steps {
-          script {
-               build.qualitygate()
-
-        }
-    }
-    
-  }
-
-    stage('Quality gate') {
-    when { allOf { environment name: 'os_type', value: 'windows'} }  
+    stage('Quality gate') { 
       steps {
           script {
                build.qualitygate()
