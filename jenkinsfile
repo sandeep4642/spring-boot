@@ -1,26 +1,6 @@
 @Library('jenkins-shared-library')_
 
 pipeline {
-    agent { label 'azure-agent' }
-
-stages {
-
-
-  stage('Demo') {
-  when { allOf { environment name: 'app_type', value: 'java'} }  
-      steps {
-          script {
-               build.mavenbuild()
-
-        }
-    }
-    
-  }
-}
-} 
-@Library('jenkins-shared-library')_
-
-pipeline {
     agent any
 
 stages {
