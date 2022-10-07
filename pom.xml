@@ -3,6 +3,13 @@
 pipeline {
     agent any
 
+
+environment {
+    registry: "sandeep"
+    registryrepo: "sandeep-springboot/${git_repo}"
+    dockerfile: 'Dockerfile'
+    imageuri: "${registry}${registryrepo}:${env.BUILD_NUMBER}"
+}
 stages {
   stage('linx-Sonarqube analysis') {
    when { allOf { environment name: 'os_type', value: 'linux'} }  
@@ -51,7 +58,7 @@ stages {
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
-               build.buildDockerTaggedImage()
+               build.buildDockerTaggedImage(imageuri)
 
         }
     }
