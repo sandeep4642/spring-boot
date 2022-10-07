@@ -41,10 +41,7 @@ stages {
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
         script {
-            docker.withRegistry( '', registryCreds ) {
-            dockerImage.push("$BUILD_NUMBER")
-            dockerImage.push('latest')
-            }
+             build.dockerpush()
             }
     }
     
