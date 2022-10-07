@@ -11,16 +11,6 @@ environment {
     imageuri: "${registry}${registryrepo}:${env.BUILD_NUMBER}"
 }
 stages {
-  stage('linx-Sonarqube analysis') {
-   when { allOf { environment name: 'os_type', value: 'linux'} }  
-      steps {
-          script {
-               build.mavensonarbuild()
-
-        }
-    }
-    
-  }
 
     stage('windows-Sonarqube analysis') {
     when { allOf { environment name: 'os_type', value: 'windows'} }  
