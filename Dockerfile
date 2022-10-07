@@ -1,4 +1,4 @@
-FROM java:8
+FROM openjdk
 
 RUN groupadd -g 1999 sandeep-grp && useradd -r -u 1999 -g root sandeep
 
