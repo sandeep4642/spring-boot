@@ -5,10 +5,10 @@ pipeline {
 
 
 environment {
-    registry: sandeep
-    registryrepo: sandeep-springboot/${git_repo}
-    dockerfile: Dockerfile
-    imageuri: "${registry}${registryrepo}:${env.BUILD_NUMBER}"
+    registry = "sandeep"
+    registryrepo = "sandeep-springboot/${git_repo}"
+    dockerfile = "Dockerfile"
+    imageuri =  ""${registry}${registryrepo}:${env.BUILD_NUMBER}""
 }
 stages {
 
