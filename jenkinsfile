@@ -30,7 +30,7 @@ stages {
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
-               dockerImage = build.buildDockerTaggedImage1(imageURI)
+            dockerImage = build.buildDockerTaggedImage1(imageURI)
 
         }
     }
@@ -40,10 +40,12 @@ stages {
     agent { label 'slave1'}
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
-          script {
-               build.publishDockerImage(registry, registryCreds, dockerImage, imageURI, removeAfterPublish = RemoveImageOPublish)
-
-        }
+        script {
+            docker.withRegistry( '', registryCreds ) {
+            dockerImage.push("$BUILD_NUMBER")
+            dockerImage.push('latest')
+            }
+            }
     }
     
   }
