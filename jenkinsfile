@@ -7,7 +7,7 @@ stages {
 
 
   stage('Sonarqube analysis') {
-  when { allOf { environment name: 'app_type', value: 'java'} }  
+  when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
                build.mavensonarbuild()
@@ -16,8 +16,30 @@ stages {
     }
     
   }
+
+    stage('Sonarqube analysis') {
+    when { allOf { environment name: 'os_type', value: 'windows'} }  
+      steps {
+          script {
+               build.windowsmavensonarbuild()
+
+        }
+    }
+    
+  }
     stage('Quality gate') {
-    when { allOf { environment name: 'app_type', value: 'java'} }  
+    when { allOf { environment name: 'os_type', value: 'linux'} }  
+      steps {
+          script {
+               build.qualitygate()
+
+        }
+    }
+    
+  }
+
+    stage('Quality gate') {
+    when { allOf { environment name: 'os_type', value: 'windows'} }  
       steps {
           script {
                build.qualitygate()
@@ -28,7 +50,7 @@ stages {
   }
     stage('Build') {
     agent { label 'slave1'}
-    when { allOf { environment name: 'app_type', value: 'java'} }  
+    when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
                build.mavenbuild()
