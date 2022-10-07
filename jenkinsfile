@@ -6,7 +6,7 @@ pipeline {
 
 environment {
     registry = "sandeep4642"
-    registryrepo = "/sandeep-springboot/spring-boot"
+    registryrepo = "/spring-boot"
     registryCreds = "dockerhub-creds"
     dockerfile = "Dockerfile"
     imageURI =  "${registry}${registryrepo}:${env.BUILD_NUMBER}"
