@@ -12,25 +12,6 @@ environment {
 }
 stages {
 
-    stage('windows-Sonarqube analysis') {
-    when { allOf { environment name: 'os_type', value: 'windows'} }  
-      steps {
-          script {
-               build.windowsmavensonarbuild()
-
-        }
-    }
-    
-  }
-    stage('Quality gate') { 
-      steps {
-          script {
-               build.qualitygate()
-
-        }
-    }
-    
-  }
     stage('Build') {
     agent { label 'slave1'}
     when { allOf { environment name: 'os_type', value: 'linux'} }  
