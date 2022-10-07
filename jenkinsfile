@@ -29,7 +29,7 @@ stages {
     when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
-               build.buildDockerTaggedImage1()
+               build.buildDockerTaggedImage1(imageURI)
 
         }
     }
