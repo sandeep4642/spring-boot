@@ -4,7 +4,7 @@ pipeline {
     agent any
 
 stages {
-  stage('Sonarqube analysis') {
+  stage('linx-Sonarqube analysis') {
    when { allOf { environment name: 'os_type', value: 'linux'} }  
       steps {
           script {
@@ -15,7 +15,7 @@ stages {
     
   }
 
-    stage('Sonarqube analysis') {
+    stage('windows-Sonarqube analysis') {
     when { allOf { environment name: 'os_type', value: 'windows'} }  
       steps {
           script {
