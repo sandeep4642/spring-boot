@@ -9,7 +9,7 @@ on:
   
 jobs:
   Extract_Branch:
-    runs-on: ubuntu-latest
+    runs-on: aws-runner
     steps:
       - name: Extract Branch Name
         shell: bash  
