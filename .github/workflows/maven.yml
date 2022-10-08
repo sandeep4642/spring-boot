@@ -41,5 +41,5 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: sandeep4642/spring-boot:latest
+          tags: sandeep4642/spring-boot:${{github.run_number}}
         
