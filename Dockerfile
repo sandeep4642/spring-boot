@@ -6,7 +6,7 @@ RUN mkdir /apps
 
 WORKDIR /apps
 
-COPY ./target/*.jar /apps/spring-boot.jar
+COPY **/*.jar /apps/spring-boot.jar
 
 RUN chown sandeep:sandeep-grp /apps -R
 
