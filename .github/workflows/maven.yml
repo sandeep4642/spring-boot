@@ -27,8 +27,8 @@ jobs:
           
       - name: Build with Maven
         run: mvn -DskipTests clean package
-  
-  Docker Build:
+
+  Docker_Build:
     runs-on: aws-runner
     needs: [Extract_Branch]
     steps:
