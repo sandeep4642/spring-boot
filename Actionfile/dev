@@ -1,0 +1,7 @@
+{
+    "application_properties": {
+    "APPCODE": "sandeep",
+            "APPNAME": "spring-boot",
+            "REGISTRY_URL": "https://hub.docker.com/"
+    }
+}
