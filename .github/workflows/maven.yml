@@ -13,5 +13,5 @@ jobs:
       javaVersion: 11
     secrets:
       Dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
-      Dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
+      Dockerhub_token: ${{ secrets.DOCKERHUB_TOKEN }}
   
