@@ -2,11 +2,7 @@ name: CI
 
 on:
   workflow_dispatch:
-    inputs:
-      javaversion:
-        default: "11"
-        type: number
-  
+
 jobs:
   Extract_Branch:
     uses: sandeep4642/github_actions_library/.github/workflows/extract_branch.yml@main
