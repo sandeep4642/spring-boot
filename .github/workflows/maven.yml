@@ -11,6 +11,7 @@ jobs:
     uses: sandeep4642/github_actions_library/.github/workflows/ci.yml@main
     with:
       javaVersion: 11
-      username: ${{ secrets.DOCKERHUB_USERNAME }}
-      password: ${{ secrets.DOCKERHUB_TOKEN }}
+    secrets:
+      Dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+      Dockerhub_password: ${{ secrets.DOCKERHUB_TOKEN }}
   
