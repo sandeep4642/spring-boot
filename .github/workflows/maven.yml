@@ -10,7 +10,7 @@ jobs:
     needs: [Extract_Branch]
     uses: sandeep4642/github_actions_library/.github/workflows/ci.yml@main
     with:
-      ACTIONFILE: "Actionfile/dev"
+      ActionFile: "Actionfile/dev"
       javaVersion: 11
     secrets:
       Dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
