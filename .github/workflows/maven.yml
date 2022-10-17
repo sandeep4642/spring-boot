@@ -13,4 +13,6 @@ jobs:
   CI_Workflow:
     needs: [Extract_Branch]
     uses: sandeep4642/github_actions_library/.github/workflows/ci.yml@main
+    with:
+      javaVersion: 11
   
