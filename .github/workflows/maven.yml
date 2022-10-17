@@ -10,3 +10,6 @@ on:
 jobs:
   Extract_Branch:
     uses: sandeep4642/github_actions_library/.github/workflows/extract_branch.yml@main
+  CI_Workflow:
+    uses: sandeep4642/github_actions_library/.github/workflows/ci.yml@main
+  
